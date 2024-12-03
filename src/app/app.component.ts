@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { PredictionTableComponent } from './components/prediction-table/prediction-table.component';
-import { MatIconModule } from '@angular/material/icon'
+import { MatIconModule } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatMenuModule } from '@angular/material/menu';
@@ -11,25 +11,41 @@ import {
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
-import {MatSelectModule} from '@angular/material/select';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CommonModule } from '@angular/common';
 import { GraphContainerComponent } from './components/graph-container/graph-container.component';
 import { FormsModule } from '@angular/forms';
-import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { AlertDialogComponent } from './components/alert-dialog/alert-dialog.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, PredictionTableComponent, MatIconModule, MatTooltip, MatBadgeModule, MatMenuModule, MatButtonModule,
-    MatSelectModule, MatFormFieldModule, MatButtonToggleModule, MatCheckboxModule, MatSlideToggleModule, CommonModule, 
-    GraphContainerComponent, FormsModule, MatDialogModule, AlertDialogComponent],
+  imports: [
+    RouterOutlet,
+    PredictionTableComponent,
+    MatIconModule,
+    MatTooltip,
+    MatBadgeModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatButtonToggleModule,
+    MatCheckboxModule,
+    MatSlideToggleModule,
+    CommonModule,
+    GraphContainerComponent,
+    FormsModule,
+    MatDialogModule,
+    AlertDialogComponent,
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   private _snackBar = inject(MatSnackBar);
@@ -37,15 +53,16 @@ export class AppComponent {
     { message: 'First Message!', action: 'Got it' },
     { message: 'Second Message!', action: 'Okay' },
     { message: 'Third Message!', action: 'Dismiss' },
-    { message: 'Fourth Message!', action: 'Close' }
+    { message: 'Fourth Message!', action: 'Close' },
   ];
+  filters = ['Top 5', 'Top 10', 'Top 50'];
   currentIndex = 0;
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   hideSingleSelectionIndicator = signal(false);
   selectedSeverity: string = '';
   public selectedMenu: string = 'home';
-  selected : any =  '';
+  selected: any = '';
   public isResetClicked: boolean = false;
   isWeekly = false;
   isMonthly = false;
@@ -62,7 +79,7 @@ export class AppComponent {
   }
 
   toggleSingleSelectionIndicator() {
-    this.hideSingleSelectionIndicator.update(value => !value);
+    this.hideSingleSelectionIndicator.update((value) => !value);
   }
 
   onSelectionChange(event: any) {
@@ -98,25 +115,40 @@ export class AppComponent {
   onToggleChange(selected: string) {
     if (selected === 'weekly') {
       this.isWeekly = true;
-      this.isMonthly = false;  // Turn off the Monthly toggle when Weekly is selected
+      this.isMonthly = false; // Turn off the Monthly toggle when Weekly is selected
       // this.selectedValue = selected;
     } else if (selected === 'monthly') {
-      this.isWeekly = false;   // Turn off the Weekly toggle when Monthly is selected
+      this.isWeekly = false; // Turn off the Weekly toggle when Monthly is selected
       this.isMonthly = true;
     }
   }
 
   addAlert() {
     const alertTypes = [
-      { message: 'New Low Stock Alert', additionalInfo: "Additional Info", color: '#f44336' }, // Red
-      { message: 'New Overstock Alert', additionalInfo: "Additional Info", color: '#ff9800' }, // Orange
-      { message: 'New Expiry Alert', additionalInfo: "Additional Info", color: '#4caf50' }, // Green
-      { message: 'New Damaged Goods Alert', additionalInfo: "Additional Info", color: '#2196f3' }, // Blue
+      {
+        message: 'New Low Stock Alert',
+        additionalInfo: 'Additional Info',
+        color: '#f44336',
+      }, // Red
+      {
+        message: 'New Overstock Alert',
+        additionalInfo: 'Additional Info',
+        color: '#ff9800',
+      }, // Orange
+      {
+        message: 'New Expiry Alert',
+        additionalInfo: 'Additional Info',
+        color: '#4caf50',
+      }, // Green
+      {
+        message: 'New Damaged Goods Alert',
+        additionalInfo: 'Additional Info',
+        color: '#2196f3',
+      }, // Blue
     ];
 
     // Randomly pick an alert type
-    const newAlert =
-      alertTypes[Math.floor(Math.random() * alertTypes.length)];
+    const newAlert = alertTypes[Math.floor(Math.random() * alertTypes.length)];
 
     // Add the new alert to the alerts array
     this.alerts.push({

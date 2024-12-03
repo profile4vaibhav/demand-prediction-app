@@ -39,6 +39,7 @@ export const chartConfigTopPrediction: ChartConfiguration = {
     },
     layout: {
       padding: {
+        left: 10,
         right: 50,
       },
     },
