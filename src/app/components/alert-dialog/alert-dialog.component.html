@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>
+    <span>Alert</span>
+</h2>
+
+<mat-dialog-content>
+    <p>{{ data.message }}</p>
+
+    <!-- Additional Info Section -->
+    <div *ngIf="data.additionalInfo">
+        <h3>Details:</h3>
+        <p>{{ data.additionalInfo }}</p>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

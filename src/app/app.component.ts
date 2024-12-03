@@ -19,12 +19,15 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { CommonModule } from '@angular/common';
 import { GraphContainerComponent } from './components/graph-container/graph-container.component';
 import { FormsModule } from '@angular/forms';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { AlertDialogComponent } from './components/alert-dialog/alert-dialog.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, PredictionTableComponent, MatIconModule, MatTooltip, MatBadgeModule, MatMenuModule, MatButtonModule,
-    MatSelectModule, MatFormFieldModule, MatButtonToggleModule, MatCheckboxModule, MatSlideToggleModule, CommonModule, GraphContainerComponent, FormsModule],
+    MatSelectModule, MatFormFieldModule, MatButtonToggleModule, MatCheckboxModule, MatSlideToggleModule, CommonModule, 
+    GraphContainerComponent, FormsModule, MatDialogModule, AlertDialogComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -49,6 +52,10 @@ export class AppComponent {
   selectedValue: string = '';
 
   showNotifications = false;
+  alerts: any[] = [];
+  private alertIdCounter = this.alerts.length + 1;
+
+  constructor(public dialog: MatDialog) {}
 
   toggleNotifications() {
     this.showNotifications = !this.showNotifications;
@@ -97,5 +104,40 @@ export class AppComponent {
       this.isWeekly = false;   // Turn off the Weekly toggle when Monthly is selected
       this.isMonthly = true;
     }
+  }
+
+  addAlert() {
+    const alertTypes = [
+      { message: 'New Low Stock Alert', additionalInfo: "Additional Info", color: '#f44336' }, // Red
+      { message: 'New Overstock Alert', additionalInfo: "Additional Info", color: '#ff9800' }, // Orange
+      { message: 'New Expiry Alert', additionalInfo: "Additional Info", color: '#4caf50' }, // Green
+      { message: 'New Damaged Goods Alert', additionalInfo: "Additional Info", color: '#2196f3' }, // Blue
+    ];
+
+    // Randomly pick an alert type
+    const newAlert =
+      alertTypes[Math.floor(Math.random() * alertTypes.length)];
+
+    // Add the new alert to the alerts array
+    this.alerts.push({
+      id: this.alertIdCounter++, // Increment ID
+      message: newAlert.message,
+      additionalInfo: newAlert.additionalInfo,
+      color: newAlert.color,
+    });
+  }
+
+  closeAlert(event: Event, id: number) {
+    event.stopPropagation(); // Prevent triggering the dialog
+    this.alerts = this.alerts.filter((alert) => alert.id !== id);
+  }
+
+  // Function to open a dialog with the alert's message
+  openDialog(message: string, additionalInfo: string) {
+    this.dialog.open(AlertDialogComponent, {
+      data: { message, additionalInfo },
+      width: '600px', // Set dialog width
+      panelClass: 'custom-dialog-container', // Optional custom styles
+    });
   }
 }

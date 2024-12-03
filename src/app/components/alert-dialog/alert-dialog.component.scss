@@ -1,0 +1,44 @@
+/* Ensure the title area is relatively positioned to contain the absolute button */
+.custom-dialog-container .mat-dialog-title {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 40px; /* Ensure there's space on the right for the close button */
+    margin-bottom: 16px;
+  }
+  
+  .custom-dialog-container .close-button {
+    position: absolute;
+    top: 10px;   /* Adjust the top position as needed */
+    right: 10px; /* Adjust the right position as needed */
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .custom-dialog-container .close-button mat-icon {
+    font-size: 24px;
+    color: rgba(0, 0, 0, 0.54); /* Adjust the icon color */
+  }
+  
+  .custom-dialog-container .mat-dialog-content {
+    padding: 20px;
+  }
+  
+  .custom-dialog-container .mat-dialog-content h3 {
+    color: #333;
+    font-size: 1.2em;
+    margin-top: 10px;
+  }
+  
+  .custom-dialog-container .mat-dialog-content p {
+    font-size: 1em;
+    color: #555;
+  }
+
+  mat-dialog-actions {
+    margin-left: 32rem;
+  }
+  

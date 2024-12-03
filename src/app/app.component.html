@@ -2,7 +2,7 @@
   <!-- Header -->
   <header class="header">
     <div class="header-left custom-font">S I M S</div> <!-- Empty left side for spacing -->
-    <div class="header-center" (click)="openSnackBar()">
+    <div class="header-center" (click)="addAlert()">
       <span class="custom-font">Moving Your Business Forward</span>
       <mat-icon>local_airport</mat-icon>
     </div>    
@@ -107,6 +107,21 @@
         
         
       </section>
+
+      <div class="alert-container">
+        <mat-card
+          *ngFor="let alert of alerts"
+          [ngStyle]="{ 'background-color': alert.color }"
+          class="alert-card"
+          (click)="openDialog(alert.message, alert.additionalInfo)"
+        >
+          <span class="alert-message">{{ alert.message }}</span>
+          <mat-icon
+            class="close-icon"
+            (click)="closeAlert($event, alert.id)"
+          >close</mat-icon>
+        </mat-card>
+      </div>
     </section>
     <section class="body-section" *ngIf="selectedMenu === 'home'">
       <div class="inventory-prediction-table">Inventory Prediction Table</div>
