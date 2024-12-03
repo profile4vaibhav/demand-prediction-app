@@ -1,10 +1,13 @@
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   inject,
   Input,
   OnChanges,
   OnInit,
+  Output,
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
@@ -24,6 +27,7 @@ import { MatTooltip } from '@angular/material/tooltip';
   imports: [MatTableModule, MatPaginatorModule, HttpClientModule, MatSortModule, CommonModule, MatTooltip],
   templateUrl: './prediction-table.component.html',
   styleUrls: ['./prediction-table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PredictionTableComponent
   implements OnInit, OnChanges, AfterViewInit
@@ -41,6 +45,9 @@ export class PredictionTableComponent
   csvData: [] | undefined;
   private _liveAnnouncer = inject(LiveAnnouncer);
   @Input() severity: string | undefined;
+  @Input() isResetClicked: boolean | undefined;
+  @Output() setResetToFalse: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Input() isWeekly: boolean | undefined;
 
   constructor(private http: HttpClient, private papa: Papa) {}
 
@@ -61,8 +68,15 @@ export class PredictionTableComponent
 
       // Update the dataSource with the filtered data
       this.dataSource.data = filteredData;
-
-      console.log('Filtered Data:', this.dataSource.data);
+    } else if (changes['isResetClicked'] && changes['isResetClicked'].currentValue === true) {
+      this.setResetToFalse.emit(false);
+      this.loadCSVData();
+    } else if (changes['isWeekly'] && changes['isWeekly'].currentValue) {
+      this.url = 'assets/Weeklymockdata.csv';
+      this.loadCSVData();
+    } else if (changes['isWeekly'] && changes['isWeekly'].currentValue === false && changes['isWeekly'].firstChange !== true) {
+      this.url = 'assets/Monthlymockdata.csv';
+      this.loadCSVData();
     }
   }
 

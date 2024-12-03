@@ -7,7 +7,53 @@
       <mat-icon>local_airport</mat-icon>
     </div>    
     <div class="header-right">
-      <mat-icon matBadge="15" matBadgeColor="primary">home</mat-icon>
+  <div class="notification-container">
+    <!-- Notification Icon -->
+    <mat-icon
+      matBadge="4"
+      matBadgeColor="primary"
+      (click)="toggleNotifications()"
+      style="cursor: pointer; font-size: 25px;"
+      aria-label="Notifications"
+    >
+      notifications
+    </mat-icon>
+  
+    <!-- Notification List -->
+    <div *ngIf="showNotifications" class="notification-list">
+      <h3 class="notification-title">Notifications</h3>
+      <div class="notification-item">
+        <mat-icon color="warn">error</mat-icon>
+        <div>
+          <p class="notification-header">Low Availability Stocks</p>
+          <p class="notification-time">Updated 2 mins ago</p>
+        </div>
+      </div>
+      <div class="notification-item">
+        <mat-icon color="primary">inventory</mat-icon>
+        <div>
+          <p class="notification-header">Over Stocked Stocks</p>
+          <p class="notification-time">Updated 5 mins ago</p>
+        </div>
+      </div>
+      <div class="notification-item">
+        <mat-icon color="accent">warning</mat-icon>
+        <div>
+          <p class="notification-header">Recent Damaged Stocks</p>
+          <p class="notification-time">Updated 10 mins ago</p>
+        </div>
+      </div>
+      <div class="notification-item">
+        <mat-icon color="primary">schedule</mat-icon>
+        <div>
+          <p class="notification-header">Upcoming Expiry Stocks</p>
+          <p class="notification-time">Updated 15 mins ago</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
       <mat-icon>person</mat-icon>
       <mat-icon>exit_to_app</mat-icon>
     </div>
@@ -22,7 +68,7 @@
       <a class="menu-item" (click)="onSidebarMenuClick('analytics')">
         <mat-icon matTooltip="Analytics">assessment</mat-icon>
       </a>
-      <a class="menu-item" (click)="onSidebarMenuClick('settings')">
+      <a class="menu-item" (click)="onSidebarMenuClick('home')">
         <mat-icon matTooltip="Settings">settings</mat-icon>
       </a>
     </nav>
@@ -33,13 +79,14 @@
     <section class="filter-section">
       <section style="display: ruby;">
         <div>
-          <span style="margin-right: 1rem;">Select Severity</span>
+          <span style="margin-right: 1rem;" (click)="reset()">Select Severity</span>
         </div>
         <mat-button-toggle-group
           name="favoriteColor"
           aria-label="Favorite Color"
           [hideSingleSelectionIndicator]="hideSingleSelectionIndicator()"
           (change)="onSelectionChange($event)"
+          [(ngModel)]="selected"
         >
           <mat-button-toggle value="Red">Red</mat-button-toggle>
           <mat-button-toggle value="Green">Green</mat-button-toggle>
@@ -47,22 +94,23 @@
         </mat-button-toggle-group>
 
         <p style="margin-left: 1rem;">
-          <mat-slide-toggle [color]="'blue'">
+          <mat-slide-toggle [(ngModel)]="isWeekly" [color]="'blue'" (change)="onToggleChange('weekly')">
             Weekly
           </mat-slide-toggle>
         </p>
         
         <p style="margin-left: 1rem;">
-          <mat-slide-toggle [color]="'blue'">
+          <mat-slide-toggle [(ngModel)]="isMonthly" [color]="'blue'" (change)="onToggleChange('monthly')">
             Monthly
           </mat-slide-toggle>
         </p>
+        
         
       </section>
     </section>
     <section class="body-section" *ngIf="selectedMenu === 'home'">
       <div class="inventory-prediction-table">Inventory Prediction Table</div>
-      <app-prediction-table [severity]="selectedSeverity"></app-prediction-table>
+      <app-prediction-table [severity]="selectedSeverity" [isResetClicked]="isResetClicked" [isWeekly]="isWeekly" (setResetToFalse)="onSetResetToFalse($event)"></app-prediction-table>
     </section>
     <section class="body-section" *ngIf="selectedMenu === 'analytics'">
       <app-graph-container></app-graph-container>

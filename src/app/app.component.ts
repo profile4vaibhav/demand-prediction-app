@@ -18,12 +18,13 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { CommonModule } from '@angular/common';
 import { GraphContainerComponent } from './components/graph-container/graph-container.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, PredictionTableComponent, MatIconModule, MatTooltip, MatBadgeModule, MatMenuModule, MatButtonModule,
-    MatSelectModule, MatFormFieldModule, MatButtonToggleModule, MatCheckboxModule, MatSlideToggleModule, CommonModule, GraphContainerComponent],
+    MatSelectModule, MatFormFieldModule, MatButtonToggleModule, MatCheckboxModule, MatSlideToggleModule, CommonModule, GraphContainerComponent, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -41,6 +42,17 @@ export class AppComponent {
   hideSingleSelectionIndicator = signal(false);
   selectedSeverity: string = '';
   public selectedMenu: string = 'home';
+  selected : any =  '';
+  public isResetClicked: boolean = false;
+  isWeekly = false;
+  isMonthly = false;
+  selectedValue: string = '';
+
+  showNotifications = false;
+
+  toggleNotifications() {
+    this.showNotifications = !this.showNotifications;
+  }
 
   toggleSingleSelectionIndicator() {
     this.hideSingleSelectionIndicator.update(value => !value);
@@ -63,5 +75,27 @@ export class AppComponent {
 
   onSidebarMenuClick(menu: string) {
     this.selectedMenu = menu;
+  }
+
+  reset() {
+    this.selected = null;
+    this.isResetClicked = true;
+    this.isWeekly = false;
+    this.isMonthly = false;
+  }
+
+  onSetResetToFalse(value: boolean) {
+    this.isResetClicked = value;
+  }
+
+  onToggleChange(selected: string) {
+    if (selected === 'weekly') {
+      this.isWeekly = true;
+      this.isMonthly = false;  // Turn off the Monthly toggle when Weekly is selected
+      // this.selectedValue = selected;
+    } else if (selected === 'monthly') {
+      this.isWeekly = false;   // Turn off the Weekly toggle when Monthly is selected
+      this.isMonthly = true;
+    }
   }
 }

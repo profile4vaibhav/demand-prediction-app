@@ -195,3 +195,74 @@
     word-spacing: 11px;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
 }
+
+.notification-container {
+    position: relative;
+  }
+  
+  .notification-list {
+    position: absolute;
+    top: 38px;
+    right: -57px;
+    width: 300px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    z-index: 1000;
+    overflow-y: auto;
+    max-height: 300px; /* Ensures it doesn't exceed the screen size */
+    cursor: pointer;
+  }
+  
+  .notification-title {
+    margin: 0 0 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    color: orange;
+  }
+  
+  .notification-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #000;
+  }
+  
+  .notification-item:last-child {
+    border-bottom: none;
+  }
+  
+  .notification-item mat-icon {
+    font-size: 24px;
+  }
+  
+  .notification-header {
+    margin: 0;
+    color: #333;
+  }
+  
+  .notification-time {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #666;
+  }
+  
+  /* Add a scrollbar for overflow */
+  .notification-list::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .notification-list::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+  }
+  
+  .notification-list::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa;
+  }
+  
+  
