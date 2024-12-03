@@ -5,55 +5,48 @@
     <div class="header-center" (click)="addAlert()">
       <span class="custom-font">Moving Your Business Forward</span>
       <mat-icon>local_airport</mat-icon>
-    </div>    
-    <div class="header-right">
-  <div class="notification-container">
-    <!-- Notification Icon -->
-    <mat-icon
-      matBadge="4"
-      matBadgeColor="primary"
-      (click)="toggleNotifications()"
-      style="cursor: pointer; font-size: 25px;"
-      aria-label="Notifications"
-    >
-      notifications
-    </mat-icon>
-  
-    <!-- Notification List -->
-    <div *ngIf="showNotifications" class="notification-list">
-      <h3 class="notification-title">Notifications</h3>
-      <div class="notification-item">
-        <mat-icon color="warn">error</mat-icon>
-        <div>
-          <p class="notification-header">Low Availability Stocks</p>
-          <p class="notification-time">Updated 2 mins ago</p>
-        </div>
-      </div>
-      <div class="notification-item">
-        <mat-icon color="primary">inventory</mat-icon>
-        <div>
-          <p class="notification-header">Over Stocked Stocks</p>
-          <p class="notification-time">Updated 5 mins ago</p>
-        </div>
-      </div>
-      <div class="notification-item">
-        <mat-icon color="accent">warning</mat-icon>
-        <div>
-          <p class="notification-header">Recent Damaged Stocks</p>
-          <p class="notification-time">Updated 10 mins ago</p>
-        </div>
-      </div>
-      <div class="notification-item">
-        <mat-icon color="primary">schedule</mat-icon>
-        <div>
-          <p class="notification-header">Upcoming Expiry Stocks</p>
-          <p class="notification-time">Updated 15 mins ago</p>
-        </div>
-      </div>
     </div>
-  </div>
-  
+    <div class="header-right">
+      <div class="notification-container">
+        <!-- Notification Icon -->
+        <mat-icon matBadge="4" matBadgeColor="primary" (click)="toggleNotifications()"
+          style="cursor: pointer; font-size: 25px;" aria-label="Notifications">
+          notifications
+        </mat-icon>
 
+        <!-- Notification List -->
+        <div *ngIf="showNotifications" class="notification-list">
+          <h3 class="notification-title">Notifications</h3>
+          <div class="notification-item">
+            <mat-icon color="warn">error</mat-icon>
+            <div>
+              <p class="notification-header">Low Availability Stocks</p>
+              <p class="notification-time">Updated 2 mins ago</p>
+            </div>
+          </div>
+          <div class="notification-item">
+            <mat-icon color="primary">inventory</mat-icon>
+            <div>
+              <p class="notification-header">Over Stocked Stocks</p>
+              <p class="notification-time">Updated 5 mins ago</p>
+            </div>
+          </div>
+          <div class="notification-item">
+            <mat-icon color="accent">warning</mat-icon>
+            <div>
+              <p class="notification-header">Recent Damaged Stocks</p>
+              <p class="notification-time">Updated 10 mins ago</p>
+            </div>
+          </div>
+          <div class="notification-item">
+            <mat-icon color="primary">schedule</mat-icon>
+            <div>
+              <p class="notification-header">Upcoming Expiry Stocks</p>
+              <p class="notification-time">Updated 15 mins ago</p>
+            </div>
+          </div>
+        </div>
+      </div>
       <mat-icon>person</mat-icon>
       <mat-icon>exit_to_app</mat-icon>
     </div>
@@ -76,18 +69,14 @@
 
   <!-- Main Content -->
   <main class="main-content">
-    <section class="filter-section">
+    <section class="filter-section" *ngIf="selectedMenu === 'home'">
       <section style="display: ruby;">
         <div>
           <span style="margin-right: 1rem;" (click)="reset()">Select Severity</span>
         </div>
-        <mat-button-toggle-group
-          name="favoriteColor"
-          aria-label="Favorite Color"
-          [hideSingleSelectionIndicator]="hideSingleSelectionIndicator()"
-          (change)="onSelectionChange($event)"
-          [(ngModel)]="selected"
-        >
+        <mat-button-toggle-group name="favoriteColor" aria-label="Favorite Color"
+          [hideSingleSelectionIndicator]="hideSingleSelectionIndicator()" (change)="onSelectionChange($event)"
+          [(ngModel)]="selected">
           <mat-button-toggle value="Red">Red</mat-button-toggle>
           <mat-button-toggle value="Green">Green</mat-button-toggle>
           <mat-button-toggle value="Yellow">Yellow</mat-button-toggle>
@@ -98,36 +87,30 @@
             Weekly
           </mat-slide-toggle>
         </p>
-        
+
         <p style="margin-left: 1rem;">
           <mat-slide-toggle [(ngModel)]="isMonthly" [color]="'blue'" (change)="onToggleChange('monthly')">
             Monthly
           </mat-slide-toggle>
         </p>
-        
-        
+
+
       </section>
 
       <div class="alert-container">
-        <mat-card
-          *ngFor="let alert of alerts"
-          [ngStyle]="{ 'background-color': alert.color }"
-          class="alert-card"
-          (click)="openDialog(alert.message, alert.additionalInfo)"
-        >
+        <mat-card *ngFor="let alert of alerts" [ngStyle]="{ 'background-color': alert.color }" class="alert-card"
+          (click)="openDialog(alert.message, alert.additionalInfo)">
           <span class="alert-message">{{ alert.message }}</span>
-          <mat-icon
-            class="close-icon"
-            (click)="closeAlert($event, alert.id)"
-          >close</mat-icon>
+          <mat-icon class="close-icon" (click)="closeAlert($event, alert.id)">close</mat-icon>
         </mat-card>
       </div>
     </section>
     <section class="body-section" *ngIf="selectedMenu === 'home'">
       <div class="inventory-prediction-table">Inventory Prediction Table</div>
-      <app-prediction-table [severity]="selectedSeverity" [isResetClicked]="isResetClicked" [isWeekly]="isWeekly" (setResetToFalse)="onSetResetToFalse($event)"></app-prediction-table>
+      <app-prediction-table [severity]="selectedSeverity" [isResetClicked]="isResetClicked" [isWeekly]="isWeekly"
+        (setResetToFalse)="onSetResetToFalse($event)"></app-prediction-table>
     </section>
-    <section class="body-section" *ngIf="selectedMenu === 'analytics'">
+    <section class="chart-body-section" *ngIf="selectedMenu === 'analytics'">
       <app-graph-container></app-graph-container>
     </section>
   </main>

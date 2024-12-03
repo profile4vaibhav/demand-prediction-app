@@ -106,6 +106,7 @@
     grid-area: sidebar;
     background-color: #f4f4f4;
     padding: 15px;
+    align-content: center;
     height: 100%;
     /* Ensure sidebar fills the full height */
     overflow-y: auto;
@@ -123,9 +124,9 @@
 .menu-item {
     display: block;
     color: white;
-    background-color: #ffa500;
+    background-color: #EF7B10;
     padding: 20px;
-    border: 2px solid #e67300;
+    border: 2px solid #ff7b00;
     border-radius: 8px;
     font-weight: bold;
     text-align: center;
@@ -133,13 +134,13 @@
 }
 
 .menu-item:hover {
-    background-color: #e67300;
-    border-color: #c65c00;
+    background-color: #ffa500;
+    border-color: #ff7b00;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 .menu-item:active {
-    background-color: #cc5c00;
+    background-color: #de9b64;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -167,6 +168,15 @@
     flex: 1;
     background-color: #fff;
     padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.chart-body-section {
+    flex: 1;
+    background-color: #fff;
+    padding: {
+        top: 150px;
+    };
     border: 1px solid #ddd;
 }
 
@@ -199,7 +209,7 @@
 .notification-container {
     position: relative;
   }
-  
+
   .notification-list {
     position: absolute;
     top: 38px;
@@ -215,7 +225,7 @@
     max-height: 300px; /* Ensures it doesn't exceed the screen size */
     cursor: pointer;
   }
-  
+
   .notification-title {
     margin: 0 0 10px;
     font-size: 1.2rem;
@@ -223,7 +233,7 @@
     text-align: center;
     color: orange;
   }
-  
+
   .notification-item {
     display: flex;
     align-items: center;
@@ -231,36 +241,36 @@
     padding: 10px 0;
     border-bottom: 1px solid #000;
   }
-  
+
   .notification-item:last-child {
     border-bottom: none;
   }
-  
+
   .notification-item mat-icon {
     font-size: 24px;
   }
-  
+
   .notification-header {
     margin: 0;
     color: #333;
   }
-  
+
   .notification-time {
     margin: 0;
     font-size: 0.85rem;
     color: #666;
   }
-  
+
   /* Add a scrollbar for overflow */
   .notification-list::-webkit-scrollbar {
     width: 6px;
   }
-  
+
   .notification-list::-webkit-scrollbar-thumb {
     background-color: #ccc;
     border-radius: 10px;
   }
-  
+
   .notification-list::-webkit-scrollbar-thumb:hover {
     background-color: #aaa;
   }
@@ -271,7 +281,7 @@
     gap: 10px;
     margin: 20px;
   }
-  
+
   .alert-card {
     display: flex;
     justify-content: space-between;
@@ -281,16 +291,16 @@
     cursor: pointer;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   }
-  
+
   .alert-card:hover {
     transform: scale(1.02);
     transition: 0.2s ease-in-out;
   }
-  
+
   .alert-message {
     font-size: 16px;
   }
-  
+
   .close-icon {
     cursor: pointer;
     font-size: 18px;
@@ -299,13 +309,12 @@
   .custom-dialog-container .mat-dialog-content {
     padding: 20px; /* Adjust padding inside the dialog */
   }
-  
+
   .custom-dialog-container .mat-dialog-title {
     padding-bottom: 10px; /* Optional, for some space between title and content */
   }
-  
+
   .custom-dialog-container .mat-dialog-actions {
     padding-top: 10px; /* Optional, space for action buttons if needed */
   }
-  
-  
+

@@ -1,24 +1,29 @@
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1rem;
-  }
-  
-  .grid-item {
-    padding: 1rem;
-  }
-  
-  .chart-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-  }
-  
-  mat-card-header {
-    background-color: #f1f1f1;
-  }
-  
-  mat-card-title {
-    font-weight: bold;
-    font-size: 16px;
-  }
-  
+/* Container styling */
+.container {
+  display: flex;
+}
+
+.vertical-container {
+  display: flex;
+  flex-direction: column; /* Arrange children vertically */
+}
+
+.horizontal-container {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Each section occupies an equal width */
+.section {
+  flex: 1; /* Divide space equally */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sub-section {
+  flex: 0.75; /* Divide space equally */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
