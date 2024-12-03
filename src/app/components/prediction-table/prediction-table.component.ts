@@ -1,4 +1,13 @@
-import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  inject,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
@@ -6,21 +15,32 @@ import { HttpClient } from '@angular/common/http';
 import { Papa } from 'ngx-papaparse';
 import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { CommonModule } from '@angular/common';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-prediction-table',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule, HttpClientModule, MatSortModule],
+  imports: [MatTableModule, MatPaginatorModule, HttpClientModule, MatSortModule, CommonModule, MatTooltip],
   templateUrl: './prediction-table.component.html',
-  styleUrls: ['./prediction-table.component.scss']
+  styleUrls: ['./prediction-table.component.scss'],
 })
-export class PredictionTableComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['product', 'currentStockLevel', 'predictedDemand', 'recommendedReorderQuantity', 'skuColor'];
-  dataSource = new MatTableDataSource<any>([]);  // Initialize with empty array
-  url = "assets/Mockdata.csv";
+export class PredictionTableComponent
+  implements OnInit, OnChanges, AfterViewInit
+{
+  displayedColumns: string[] = [
+    'product',
+    'currentStockLevel',
+    'predictedDemand',
+    'recommendedReorderQuantity',
+  ];
+  dataSource = new MatTableDataSource<any>([]); // Initialize with empty array
+  originalData: any[] = []; // Maintain original data for filtering
+  url = 'assets/Mockdata.csv';
   headerRow: [] | undefined;
   csvData: [] | undefined;
   private _liveAnnouncer = inject(LiveAnnouncer);
+  @Input() severity: string | undefined;
 
   constructor(private http: HttpClient, private papa: Papa) {}
 
@@ -32,23 +52,40 @@ export class PredictionTableComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort as any;
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['severity'] && changes['severity'].currentValue) {
+      // Filter the original data instead of the current dataSource data
+      const filteredData = this.originalData.filter((item: any) => {
+        return item.skuColor === changes['severity'].currentValue;
+      });
+
+      // Update the dataSource with the filtered data
+      this.dataSource.data = filteredData;
+
+      console.log('Filtered Data:', this.dataSource.data);
+    }
+  }
+
   ngOnInit(): void {
     this.loadCSVData();
   }
 
   loadCSVData() {
     // Fetch CSV file from the assets folder
-    this.http.get(this.url, { responseType: 'text' }).subscribe(csvData => {
+    this.http.get(this.url, { responseType: 'text' }).subscribe((csvData) => {
       // Parse the CSV data using Papa from ngx-papaparse
       this.papa.parse(csvData, {
         complete: (result) => {
-          this.csvData = result.data;  // Assign the parsed data
+          this.csvData = result.data; // Assign the parsed data
+
+          // Save the original data
+          this.originalData = [...(this.csvData as any)]; // Keep a copy of the original data
 
           // Set the data into the table
           this.dataSource.data = this.csvData as any; // Populate the table with data
         },
-        header: true,  // If your CSV has headers, set this to true
-        skipEmptyLines: true  // Skip empty lines
+        header: true, // If your CSV has headers, set this to true
+        skipEmptyLines: true, // Skip empty lines
       });
     });
   }

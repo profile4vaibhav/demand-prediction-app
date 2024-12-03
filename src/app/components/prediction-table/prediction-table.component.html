@@ -3,34 +3,29 @@
 
         <!-- Name Column -->
         <ng-container matColumnDef="product">
-            <th mat-header-cell mat-sort-header *matHeaderCellDef> Product </th>
+            <th mat-header-cell mat-sort-header *matHeaderCellDef matTooltip="Product Info"> Product </th>
             <td mat-cell *matCellDef="let element"> {{element.product}} </td>
         </ng-container>
 
         <!-- Weight Column -->
         <ng-container matColumnDef="currentStockLevel">
-            <th mat-header-cell mat-sort-header *matHeaderCellDef> Current Stock Level </th>
-            <td mat-cell *matCellDef="let element"> {{element.currentStockLevel}} </td>
+            <th mat-header-cell mat-sort-header *matHeaderCellDef matTooltip="Current Stock Level"> Current Stock Level </th>
+            <td mat-cell *matCellDef="let element" matTooltip="Available Stock: {{element.currentStockLevel}}"> {{element.currentStockLevel}} </td>
         </ng-container>
 
         <!-- Symbol Column -->
         <ng-container matColumnDef="predictedDemand">
-            <th mat-header-cell mat-sort-header *matHeaderCellDef> Predicted Demand </th>
-            <td mat-cell *matCellDef="let element"> {{element.predictedDemand}} </td>
+            <th mat-header-cell mat-sort-header *matHeaderCellDef matTooltip="Predicted Demand"> Predicted Demand </th>
+            <td mat-cell *matCellDef="let element" matTooltip="Expected Demand: {{element.predictedDemand}}"> {{element.predictedDemand}} </td>
         </ng-container>
 
         <ng-container matColumnDef="recommendedReorderQuantity">
-            <th mat-header-cell mat-sort-header *matHeaderCellDef> Recommend Reorder Quantity </th>
-            <td mat-cell *matCellDef="let element"> {{element.recommendedReorderQuantity}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="skuColor">
-            <th mat-header-cell mat-sort-header *matHeaderCellDef> SKU Color </th>
-            <td mat-cell *matCellDef="let element"> {{element.skuColor}} </td>
+            <th mat-header-cell mat-sort-header *matHeaderCellDef matTooltip="Recommend Reorder Quantity"> Recommend Reorder Quantity </th>
+            <td mat-cell *matCellDef="let element" matTooltip="Recommended Quantity: {{element.recommendedReorderQuantity}}"> {{element.recommendedReorderQuantity}} </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-row *matRowDef="let row; let i = index; columns: displayedColumns;" [ngClass]="{gray: i % 2 === 0}"></tr>
     </table>
 
     <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons aria-label="Select page of periodic elements">

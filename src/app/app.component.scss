@@ -27,6 +27,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    color: white;
 }
 
 .header {
@@ -40,6 +41,7 @@
     flex-shrink: 0;
     /* Prevent header from shrinking */
     margin-left: 1rem;
+    background-color: #EF7B10;
 }
 
 .header-left {
@@ -51,14 +53,45 @@
     text-align: center;
     font-weight: bold;
     font-size: 1.2rem;
+    margin-right: 20px; /* Add some margin to the right */
 }
 
 .header-right {
     display: flex;
-    flex: 1;
+    flex: 0 0 auto;
     justify-content: flex-end;
     gap: 15px;
+    color: white;
+    margin-left: auto; /* Ensure right items align on the far right */
 }
+
+.header-center mat-icon {
+    margin-right: 8px;
+    font-size: 30px;
+    animation: bounceTruck 1.5s infinite; /* Applying bounce animation */
+    color: black;
+}
+
+@keyframes bounceTruck {
+    0%, 100% {
+        transform: translateY(0); /* No vertical movement */
+    }
+    50% {
+        transform: translateY(-10px); /* Move up slightly */
+    }
+}
+
+.header-right mat-icon {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.custom-font {
+    font-family: 'Arial', sans-serif; /* Choose your desired font */
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #ffffff; /* Text color */
+  }
 
 .header-right .column {
     text-align: center;
@@ -71,7 +104,7 @@
 /* Sidebar styles - now spans the full height of the screen */
 .sidebar {
     grid-area: sidebar;
-    background-color: orange;
+    background-color: #f4f4f4;
     padding: 15px;
     height: 100%;
     /* Ensure sidebar fills the full height */
@@ -124,7 +157,7 @@
 }
 
 .filter-section {
-    flex: 0 0 18%;
+    flex: 0 0 13%;
     background-color: #f9f9f9;
     padding: 10px;
     border: 1px solid #ddd;
@@ -147,4 +180,18 @@
     flex-shrink: 0;
     /* Prevent footer from shrinking */
     margin-left: 1rem;
+    background-color: #EF7B10;
+}
+
+.mat-button-toggle-group {
+    margin-top: 1rem;
+}
+
+.inventory-prediction-table {
+    text-align: center;
+    font-size: 17px;
+    letter-spacing: 3px;
+    font-family: cursive;
+    word-spacing: 11px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
 }

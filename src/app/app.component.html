@@ -1,30 +1,71 @@
 <div class="layout-container">
   <!-- Header -->
   <header class="header">
-    <div class="header-left"></div> <!-- Empty left side for spacing -->
-    <div class="header-center">SMART Inventory Management System</div> <!-- Centered Logo/Title -->
+    <div class="header-left custom-font">S I M S</div> <!-- Empty left side for spacing -->
+    <div class="header-center" (click)="openSnackBar()">
+      <span class="custom-font">Moving Your Business Forward</span>
+      <mat-icon>local_airport</mat-icon>
+    </div>    
     <div class="header-right">
-      <div class="column">Column 1</div>
-      <div class="column">Column 2</div>
-      <div class="column">Column 3</div>
+      <mat-icon matBadge="15" matBadgeColor="primary">home</mat-icon>
+      <mat-icon>person</mat-icon>
+      <mat-icon>exit_to_app</mat-icon>
     </div>
   </header>
 
   <!-- Sidebar -->
   <aside class="sidebar">
     <nav class="menu">
-      <a href="#" class="menu-item">Dashboard</a>
-      <a href="#" class="menu-item">Home</a>
-      <a href="#" class="menu-item">Details</a>
-      <a href="#" class="menu-item">About</a>
+      <a class="menu-item" (click)="onSidebarMenuClick('home')">
+        <mat-icon matTooltip="Home">home</mat-icon>
+      </a>
+      <a class="menu-item" (click)="onSidebarMenuClick('analytics')">
+        <mat-icon matTooltip="Analytics">assessment</mat-icon>
+      </a>
+      <a class="menu-item" (click)="onSidebarMenuClick('settings')">
+        <mat-icon matTooltip="Settings">settings</mat-icon>
+      </a>
     </nav>
   </aside>
 
   <!-- Main Content -->
   <main class="main-content">
-    <section class="filter-section">Filter Section</section>
-    <section class="body-section">
-      <app-prediction-table></app-prediction-table>
+    <section class="filter-section">
+      <section style="display: ruby;">
+        <div>
+          <span style="margin-right: 1rem;">Select Severity</span>
+        </div>
+        <mat-button-toggle-group
+          name="favoriteColor"
+          aria-label="Favorite Color"
+          [hideSingleSelectionIndicator]="hideSingleSelectionIndicator()"
+          (change)="onSelectionChange($event)"
+        >
+          <mat-button-toggle value="Red">Red</mat-button-toggle>
+          <mat-button-toggle value="Green">Green</mat-button-toggle>
+          <mat-button-toggle value="Yellow">Yellow</mat-button-toggle>
+        </mat-button-toggle-group>
+
+        <p style="margin-left: 1rem;">
+          <mat-slide-toggle [color]="'blue'">
+            Weekly
+          </mat-slide-toggle>
+        </p>
+        
+        <p style="margin-left: 1rem;">
+          <mat-slide-toggle [color]="'blue'">
+            Monthly
+          </mat-slide-toggle>
+        </p>
+        
+      </section>
+    </section>
+    <section class="body-section" *ngIf="selectedMenu === 'home'">
+      <div class="inventory-prediction-table">Inventory Prediction Table</div>
+      <app-prediction-table [severity]="selectedSeverity"></app-prediction-table>
+    </section>
+    <section class="body-section" *ngIf="selectedMenu === 'analytics'">
+      <app-graph-container></app-graph-container>
     </section>
   </main>
 
