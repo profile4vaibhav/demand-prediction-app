@@ -11,7 +11,7 @@
     "sidebar header"
     "sidebar main-content"
     "sidebar footer";
-  grid-template-columns: 150px 1fr;
+  grid-template-columns: 113px 1fr;
   /* Sidebar width and content area */
   grid-template-rows: auto 1fr auto;
   /* Header, content, and footer rows */
@@ -39,7 +39,6 @@
   border-bottom: 1px solid #ddd;
   flex-shrink: 0;
   /* Prevent header from shrinking */
-  margin-left: 1rem;
   background-color: #ef7b10;
 }
 
@@ -111,6 +110,7 @@
   /* Ensure sidebar fills the full height */
   overflow-y: auto;
   /* Allow vertical scroll inside the sidebar if needed */
+  width: 7rem;
 }
 
 .menu {
@@ -155,6 +155,7 @@
   /* Allow scroll inside main content if necessary */
   height: 100%;
   /* Ensure main content fills its available space */
+  padding-left: 0;
 }
 
 .filter-section {
@@ -188,7 +189,6 @@
   border-top: 1px solid #ddd;
   flex-shrink: 0;
   /* Prevent footer from shrinking */
-  margin-left: 1rem;
   background-color: #ef7b10;
 }
 
