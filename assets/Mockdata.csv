@@ -1,51 +1,21 @@
 product,currentStockLevel,predictedDemand,recommendedReorderQuantity,skuColor
-Voss Sparkling Water 444ml,252,382,107,Yellow
-Sprite 1.5L,16,104,65,Red
-Gatorade Lemon-Lime 600ml,52,110,71,Red
-Coca-Cola 6-Pack,70,247,130,Red
-Voss Sparkling Water 536ml,235,366,90,Yellow
-Vitamin Water 574ml,180,330,106,Yellow
-Arizona Green Tea 412ml,26,29,36,Red
-Sprite 1.5L,48,69,61,Red
-Fiji Water 1L,705,529,194,Red
-Sprite 1.5L,26,131,85,Red
-Powerade 600ml,109,150,42,Green
-Vitamin Water 516ml,209,340,99,Yellow
-Pepsi 12-Pack,118,159,53,Green
-Coca-Cola 6-Pack,32,219,163,Red
-Mountain Dew 2L,211,205,42,Yellow
-Sprite 1.5L,13,76,84,Red
-Gatorade Lemon-Lime 600ml,70,117,78,Red
-Arizona Green Tea 415ml,31,47,29,Red
-Tropicana Apple Juice 466ml,85,157,15,Yellow
-Dr. Pepper 6-Pack,10,57,82,Red
-Gatorade Lemon-Lime 600ml,54,123,102,Red
-Tropicana Orange Juice 1L,72,121,36,Yellow
-Gatorade Lemon-Lime 600ml,52,180,98,Red
-Voss Sparkling Water 447ml,264,316,97,Yellow
-Coca-Cola Zero 1.5L,400,488,119,Yellow
-Pepsi 12-Pack,128,155,77,Green
-Tropicana Orange Juice 1L,70,114,65,Yellow
-Kombucha Organic 16oz,359,381,39,Yellow
-Sprite 1.5L,44,150,55,Red
-Red Bull 250ml,169,250,104,Yellow
-Snapple Iced Tea 544ml,22,14,28,Red
-Snapple Iced Tea 515ml,33,57,44,Red
-Powerade 600ml,128,130,23,Green
-Snapple Iced Tea 419ml,10,97,41,Red
-Tropicana Orange Juice 1L,78,120,57,Yellow
-Powerade 600ml,110,187,26,Green
-Coca-Cola Zero 1.5L,401,457,103,Yellow
-Snapple Iced Tea 580ml,24,23,29,Red
-Coca-Cola 6-Pack,63,166,159,Red
-Snapple Iced Tea 518ml,35,25,36,Red
-Snapple Iced Tea 444ml,19,43,31,Red
-Coca-Cola 6-Pack,66,181,152,Red
-Fiji Water 1L,695,489,188,Red
-Fiji Water 1L,685,531,196,Red
-Vitamin Water 452ml,186,269,110,Yellow
-Voss Sparkling Water 526ml,246,317,104,Yellow
-Red Bull 250ml,171,290,126,Yellow
-Red Bull 250ml,182,339,110,Yellow
-Fiji Water 1L,684,488,205,Red
-Coca-Cola 6-Pack,68,207,166,Red
+Coca-Cola 6-Pack,50,200,150,Red
+Pepsi 12-Pack,120,180,60,Green
+Sprite 1.5L,30,100,70,Red
+Mountain Dew 2L,200,250,50,Yellow
+Dr. Pepper 6-Pack,10,80,70,Red
+Fiji Water 1L,500,450,50,Green
+Tropicana Orange Juice 1L,75,120,45,Yellow
+Red Bull 250ml,180,300,120,Yellow
+Gatorade Lemon-Lime 600ml,60,150,90,Red
+Snapple Iced Tea 500ml,15,50,35,Red
+Voss Sparkling Water 500ml,250,350,100,Yellow
+Pepsi Max 6-Pack,100,220,120,Yellow
+Coca-Cola Zero 1.5L,400,500,100,Yellow
+Tropicana Apple Juice 500ml,90,110,20,Yellow
+Vitamin Water 500ml,200,300,100,Yellow
+Powerade 600ml,120,150,30,Green
+Arizona Green Tea 500ml,25,60,35,Red
+Kombucha Organic 16oz,350,400,50,Yellow
+Honest Tea Lemon 500ml,40,100,60,Red
+Surplus Stock : Sparkling Water 2L,700,200,0,Green
