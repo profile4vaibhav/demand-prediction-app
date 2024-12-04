@@ -130,22 +130,22 @@ export class AppComponent {
     const alertTypes = [
       {
         message: 'Low Inventory',
-        additionalInfo: 'Coca Cola Qunatities are expected to 200',
+        additionalInfo: 'The inventory for Coca-Cola is running low, with quantities expected to reach 200 units soon. Consider restocking to avoid shortages.',
         color: '#f44336',
       }, // Red
       {
         message: 'Overstock Prodcuts',
-        additionalInfo: 'Based upon the expected qunatites Sprite stock is 200 more than expected',
+        additionalInfo: 'The current stock of Sprite exceeds the expected quantities by 200 units. Consider adjusting inventory or planning promotions to reduce surplus.',
         color: '#ff9800',
       }, // Orange
       {
         message: 'Expiry Stock',
-        additionalInfo: 'Pepsi 12-Pack is going to expire in 4th Jan 2025',
+        additionalInfo: 'The Pepsi 12-Pack is approaching its expiration date on January 4, 2025. Please prioritize its sale or consider alternate measures to minimize waste.',
         color: '#4caf50',
       }, // Green
       {
         message: 'New Damaged Goods',
-        additionalInfo: 'Mountain Dew 2L - 10 Quantities got damaged please fulfill',
+        additionalInfo: '10 units of Mountain Dew 2L have been reported as damaged. Please initiate a replacement or restocking process to fulfill the shortfall.',
         color: '#2196f3',
       }, // Blue
     ];
