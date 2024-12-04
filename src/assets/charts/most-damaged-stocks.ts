@@ -25,10 +25,27 @@ export const chartConfigMostDamagedStocks: ChartConfiguration = {
     ],
   },
   options: {
+    responsive: true,
     plugins: {
       title: {
         display: true,
         text: 'MOST DAMAGED STOCKS',
+        font: {
+          size: 16, // Adjusts the font size of the title
+        },
+      },
+      legend: {
+        position: 'bottom', // Moves the legend to the bottom
+        labels: {
+          font: {
+            size: 12, // Adjusts the font size of the legend
+          },
+        },
+      },
+      tooltip: {
+        bodyFont: {
+          size: 12, // Adjusts the font size of the tooltip text
+        },
       },
     },
   },

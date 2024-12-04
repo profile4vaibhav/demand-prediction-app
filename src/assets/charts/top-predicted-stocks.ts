@@ -26,7 +26,15 @@ export const chartConfigTopPrediction: ChartConfiguration = {
     ],
   },
   options: {
+    responsive: true,
     scales: {
+      x: {
+        ticks: {
+          font: {
+            size: 12, // Decrease the font size of the x-axis labels
+          },
+        },
+      },
       y: {
         beginAtZero: true,
       },
@@ -36,11 +44,21 @@ export const chartConfigTopPrediction: ChartConfiguration = {
         display: true,
         text: 'TOP PREDICTED STOCKS',
       },
+      legend: {
+        position: 'bottom',
+        align: 'center',
+        labels: {
+          font: {
+            size: 14,
+          },
+        },
+      },
     },
     layout: {
       padding: {
         left: 10,
         right: 50,
+        bottom: 30,
       },
     },
   },
