@@ -70,11 +70,14 @@ export class PredictionTableComponent
       this.dataSource.data = filteredData;
     } else if (changes['isResetClicked'] && changes['isResetClicked'].currentValue === true) {
       this.setResetToFalse.emit(false);
+      this.url = 'assets/Mockdata.csv';
       this.loadCSVData();
     } else if (changes['isWeekly'] && changes['isWeekly'].currentValue) {
+      this.setResetToFalse.emit(false);
       this.url = 'assets/Weeklymockdata.csv';
       this.loadCSVData();
     } else if (changes['isWeekly'] && changes['isWeekly'].currentValue === false && changes['isWeekly'].firstChange !== true) {
+      this.setResetToFalse.emit(false);
       this.url = 'assets/Monthlymockdata.csv';
       this.loadCSVData();
     }

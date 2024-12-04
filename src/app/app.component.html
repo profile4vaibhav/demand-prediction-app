@@ -9,7 +9,7 @@
     <div class="header-right">
       <div class="notification-container">
         <!-- Notification Icon -->
-        <mat-icon matBadge="4" matBadgeColor="primary" (click)="toggleNotifications()"
+        <mat-icon matTooltip="Notifications" matBadge="4" matBadgeColor="primary" (click)="toggleNotifications()"
           style="cursor: pointer; font-size: 25px;" aria-label="Notifications">
           notifications
         </mat-icon>
@@ -47,8 +47,8 @@
           </div>
         </div>
       </div>
-      <mat-icon>person</mat-icon>
-      <mat-icon>exit_to_app</mat-icon>
+      <mat-icon matTooltip="User Info">person</mat-icon>
+      <mat-icon matTooltip="Logout">exit_to_app</mat-icon>
     </div>
   </header>
 
@@ -72,7 +72,7 @@
     <section class="filter-section">
       <section style="display: ruby;">
         <div *ngIf="selectedMenu === 'home'">
-          <span style="margin-right: 1rem;" (click)="reset()">Select Severity</span>
+          <span style="margin-right: 1rem;" (click)="reset()">Check Severity</span>
         </div>
         <mat-button-toggle-group name="favoriteColor" aria-label="Favorite Color"
           [hideSingleSelectionIndicator]="hideSingleSelectionIndicator()" (change)="onSelectionChange($event)"
@@ -114,7 +114,7 @@
       </div>
     </section>
     <section class="body-section" *ngIf="selectedMenu === 'home'">
-      <div class="inventory-prediction-table">INVENTORY PREDICTION</div>
+      <div>INVENTORY PREDICTION</div>
       <app-prediction-table [severity]="selectedSeverity" [isResetClicked]="isResetClicked" [isWeekly]="isWeekly"
         (setResetToFalse)="onSetResetToFalse($event)"></app-prediction-table>
     </section>

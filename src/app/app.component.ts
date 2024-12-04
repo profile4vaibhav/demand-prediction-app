@@ -84,6 +84,8 @@ export class AppComponent {
 
   onSelectionChange(event: any) {
     this.selectedSeverity = event.value; // Capture the selected value
+    this.isWeekly = false;
+    this.isMonthly = false;
   }
 
   openSnackBar() {
@@ -110,6 +112,7 @@ export class AppComponent {
 
   onSetResetToFalse(value: boolean) {
     this.isResetClicked = value;
+    this.selected = null;
   }
 
   onToggleChange(selected: string) {
@@ -126,23 +129,23 @@ export class AppComponent {
   addAlert() {
     const alertTypes = [
       {
-        message: 'New Low Stock Alert',
-        additionalInfo: 'Additional Info',
+        message: 'Low Inventory',
+        additionalInfo: 'Coca Cola Qunatities are expected to 200',
         color: '#f44336',
       }, // Red
       {
-        message: 'New Overstock Alert',
-        additionalInfo: 'Additional Info',
+        message: 'Overstock Prodcuts',
+        additionalInfo: 'Based upon the expected qunatites Sprite stock is 200 more than expected',
         color: '#ff9800',
       }, // Orange
       {
-        message: 'New Expiry Alert',
-        additionalInfo: 'Additional Info',
+        message: 'Expiry Stock',
+        additionalInfo: 'Pepsi 12-Pack is going to expire in 4th Jan 2025',
         color: '#4caf50',
       }, // Green
       {
-        message: 'New Damaged Goods Alert',
-        additionalInfo: 'Additional Info',
+        message: 'New Damaged Goods',
+        additionalInfo: 'Mountain Dew 2L - 10 Quantities got damaged please fulfill',
         color: '#2196f3',
       }, // Blue
     ];
