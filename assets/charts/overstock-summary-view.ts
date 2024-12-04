@@ -43,6 +43,10 @@ export const chartConfigOverstockSummary: ChartConfiguration = {
       title: {
         display: true,
         text: 'OVERSTOCK SUMMARY VIEW',
+        font: {
+          size: 15,
+          family: 'Arial, sans-serif',
+        }
       },
       legend: {
         position: 'bottom', // Moves the legend to the bottom
