@@ -26,7 +26,15 @@ export const chartConfigOverstockSummary: ChartConfiguration = {
     ],
   },
   options: {
+    responsive: true,
     scales: {
+      x: {
+        ticks: {
+          font: {
+            size: 12, // Decreases font size for x-axis labels
+          },
+        },
+      },
       y: {
         beginAtZero: true,
       },
@@ -35,6 +43,14 @@ export const chartConfigOverstockSummary: ChartConfiguration = {
       title: {
         display: true,
         text: 'OVERSTOCK SUMMARY VIEW',
+      },
+      legend: {
+        position: 'bottom', // Moves the legend to the bottom
+        labels: {
+          font: {
+            size: 14, // Adjusts the font size of the legend
+          },
+        },
       },
     },
     layout: {
