@@ -43,8 +43,21 @@ export const chartConfigMostDamagedStocks: ChartConfiguration = {
         },
       },
       tooltip: {
+        // Customizing the tooltip font
         bodyFont: {
-          size: 12, // Adjusts the font size of the tooltip text
+          size: 12,  // Adjust the font size for the body of the tooltip
+          weight: 'normal',  // You can set this to 'bold' or 'normal'
+          family: 'Arial, sans-serif',  // Font family
+        },
+        titleFont: {
+          size: 14,  // Adjust the font size for the title of the tooltip
+          weight: 'bold',  // Tooltip title font weight
+          family: 'Arial, sans-serif',  // Font family
+        },
+        footerFont: {
+          size: 12,  // Adjust the font size for the footer of the tooltip (if any)
+          weight: 'normal',
+          family: 'Arial, sans-serif',
         },
       },
     },
