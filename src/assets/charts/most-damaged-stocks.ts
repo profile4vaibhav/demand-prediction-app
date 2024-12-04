@@ -31,7 +31,7 @@ export const chartConfigMostDamagedStocks: ChartConfiguration = {
         display: true,
         text: 'MOST DAMAGED STOCKS',
         font: {
-          size: 16, // Adjusts the font size of the title
+          size: 15, // Adjusts the font size of the title
         },
       },
       legend: {

@@ -43,6 +43,10 @@ export const chartConfigTopPrediction: ChartConfiguration = {
       title: {
         display: true,
         text: 'TOP PREDICTED STOCKS',
+        font: {
+          size: 15,
+          family: 'Arial, sans-serif',
+        }
       },
       legend: {
         position: 'bottom',
