@@ -97,12 +97,11 @@
 
         <mat-form-field style="padding-left: 25px;" *ngIf="selectedMenu === 'analytics'">
           <mat-label>Stocks Count</mat-label>
-          <mat-select>
-            @for (filter of filters; track filter) {
-              <mat-option value="filter">{{filter}}</mat-option>
-            }
+          <mat-select (selectionChange)="onStockFilterChange($event)">
+            <mat-option *ngFor="let filter of filters" [value]="filter">{{ filter }}</mat-option>
           </mat-select>
         </mat-form-field>
+        
       </section>
 
       <div class="alert-container">

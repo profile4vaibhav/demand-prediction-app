@@ -175,4 +175,10 @@ export class AppComponent {
       panelClass: 'custom-dialog-container', // Optional custom styles
     });
   }
+
+  onStockFilterChange(event: any): void {
+    const selectedValue = event.value;
+    console.log('Selected Filter:', selectedValue);
+    // Add your logic here
+  }
 }
